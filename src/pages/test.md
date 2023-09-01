@@ -3,6 +3,7 @@ layout: '../layouts/MarkdownLayout.astro'
 title: 'My Markdown page'
 author: Fuqiang Wang
 date: 2023-09-01
+keywords: 王福强,Fuqiang Wang,fujohnwang
 description: Find out what makes Astro awesome!
 ---
 

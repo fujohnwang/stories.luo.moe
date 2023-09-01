@@ -1,4 +1,5 @@
 --- 
+import '../styles/global.css';
 // 1. The frontmatter prop gives access to frontmatter and other data
 const { frontmatter } = Astro.props;
 ---
@@ -7,12 +8,11 @@ const { frontmatter } = Astro.props;
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta author={frontmatter.author}/>
-    <meta keywords="王福强,Fuqiang Wang,fujohnwang" />
+    <meta keywords={frontmatter.keywords} />
     <meta description={frontmatter.description} />
     <link rel="icon" type="image/svg+xml" href="https://afoo.me/favicon.svg">
     <title>{frontmatter.title}</title>
     <script src="https://unpkg.com/htmx.org@1.9.5"></script>
-    <link rel="stylesheet" href="/styles/default.css" />
   </head>
   <body>
   	<nav>
@@ -22,7 +22,8 @@ const { frontmatter } = Astro.props;
   		<a href="https://store.afoo.me">Fuqiang Store</a>
 	  </nav>
     <main>
-        <slot/>
+      <div style="color:gray; font-size: x-small">{frontmatter.date.substring(0,10)}</div>
+      <slot/>
     </main>
     <div hx-get="https://toolfooter.afoo.me/" hx-trigger="revealed"/>
     <footer>
