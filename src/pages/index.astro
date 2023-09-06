@@ -1,11 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+const blogs = await Astro.glob('../pages/*.md');
 ---
 
 <Layout title="Luomoe">
 	<main>
 		<h1>Luo . <span class="text-gradient">moe</span></h1>
+		<section class="section blog-section" id="blog-section">
+			<div class="container">
+			  <h2 class="section-title">Our Blog</h2>
+			  <ul class="blogs">
+				{blogs.map((blog) =>
+				  <li>
+					<article class="blog">          
+					<!-- 
+					  <img src={blog.frontmatter.image.url} alt="blog.frontmatter.image.alt" />
+					-->
+					  <h3>{blog.frontmatter.title}</h3>
+					  <p>{blog.frontmatter.description}</p>
+					  <a href={blog.url} class="">Read more</a>
+					</article>            
+				  </li>
+				)}
+			  </ul>
+			</div>
+		  </section>
 	</main>
 </Layout>
 
