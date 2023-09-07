@@ -1,5 +1,5 @@
 ---
-layout: '../layouts/MarkdownLayout.astro'
+layout: '../../layouts/MarkdownLayout.astro'
 title: 'My Markdown page'
 author: Fuqiang Wang
 date: 2023-09-01
