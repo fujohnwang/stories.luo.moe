@@ -21,17 +21,16 @@ const { page } = Astro.props;
     <ViewTransitions/>
   </head>
   <body>
-    <div class="container mx-auto p-6">
-      
-		<nav class="space-x-6 mb-12">
+	<div class="container mx-auto p-6 w-full lg:w-1/2">
+		<nav class="space-x-6 mt-6 mb-12">
 		  <a href="/">Home</a>
 		  <a href="https://afoo.me">Author</a>
 		  <a href="https://edu.afoo.me">AI Courses</a>
 		  <a href="https://store.afoo.me">Fuqiang Store</a>
 		</nav>
-		<main class="prose lg:prose-xl">
 
-		<h1>Luo . <span class="text-gradient">moe</span></h1>
+		<main class="prose lg:prose-xl">
+			<h1>Luo . <span class="text-gradient">moe</span></h1>
 		<section class="section blog-section" id="blog-section">
 			<div class="container">
 			  <h2 class="section-title">文章列表</h2>
@@ -91,7 +90,7 @@ const { page } = Astro.props;
     </main>
 	<hr class="my-6"/>
 
-    <div hx-get="https://toolfooter.afoo.me/" hx-trigger="revealed"/>
+    <div hx-get="https://toolfooter.afoo.me/" hx-trigger="revealed, load delay:3s"/>
          <footer class="mt-12">
         <div>
           <img
@@ -125,7 +124,7 @@ const { page } = Astro.props;
           </div>
         </div>
       </footer>
-    </div>
+	</div>
 	<script is:inline="true">
 		// Set "light" theme as default
 		// if (!localStorage.theme) {
@@ -205,6 +204,4 @@ const { page } = Astro.props;
 	  </script>
   </body>
 </html>
-
-
 
