@@ -1,6 +1,6 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-
+import '../../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
 export async function getStaticPaths({ paginate }) {
 	const blogs = await Astro.glob('./*.md');
 	return paginate(blogs, { pageSize: 11 });
@@ -9,9 +9,26 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 // const pathname = new URL(Astro.request.url).pathname.split('/');
 ---
-
-<Layout title="Luomoe">
-	<main>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta author="王福强"/>
+    <meta keywords="文章列表" />
+    <meta description=""/>
+    <link rel="icon" type="image/svg+xml" href="https://afoo.me/favicon.svg">
+    <title>文章列表</title>
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    <ViewTransitions/>
+  </head>
+  <body>
+  	<nav>
+  		<a href="/">Home</a>
+  		<a href="https://afoo.me">Author</a>
+  		<a href="https://edu.afoo.me">AI Courses</a>
+  		<a href="https://store.afoo.me">Fuqiang Store</a>
+	  </nav>
+    <main>
 		<h1>Luo . <span class="text-gradient">moe</span></h1>
 		<section class="section blog-section" id="blog-section">
 			<div class="container">
@@ -32,69 +49,26 @@ const { page } = Astro.props;
 			  </ul>
 			</div>
 		  </section>
-		  <h1>Page {page.currentPage}</h1>
+		  <h3>Page {page.currentPage}</h3>
 		  <div>
 			{page.url.prev ? <a href={page.url.prev}>Previous</a> : null}
 			{page.url.next ? <a href={page.url.next}>Next</a> : null}
 		  </div>
-	</main>
-</Layout>
+    </main>
+    <div hx-get="https://toolfooter.afoo.me/" hx-trigger="revealed"/>
+    <footer>
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACWAAAAAYAQMAAABEalRSAAAABlBMVEX///9TU1NYzE1OAAAAAXRSTlMAQObYZgAAAOtJREFUeF7tljEKwzAMRb/J0CWgI/QKOYAh1+pUcjQfpUfw2MFEHVyDQSQmQUNM9AYNcobnh4egU+YVqhAvZSpgsfolPnSv5d0nz3vHslgUdK81RLzyvHcsi+WBNxQh4Ln8pw4Wi7skAg9mXgHMrEACXJnbHIllsbqGAtwXhnYswzFzwPWxWEPc2CexoobkHM4ZpD6s2loWiyIEEwCChIomMiMEHqgP573C9eHkc5VLWh3XsljnGVoLWVl+31bp38piTVVuihtPOAm9kcRLbrFjEvqwamtZLK5eI8sSan9rXEK0LcNFrY5oWawf59S7YSRD7eMAAAAASUVORK5CYII="  style="width: 100%;">
+      <p align="center">Copyright © 2023 - <a href="https://afoo.me">Fuqiang Wang</a> All Rights Reserved.</p>
+      <p align="center">
+        <a href="https://x.com/fujohnwang"><svg viewBox="0 0 24 24" width="2rem" height="2rem" astro-icon="tabler:brand-twitter">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 4.01c-1 .49-1.98.689-3 .99-1.121-1.265-2.783-1.335-4.38-.737S11.977 6.323 12 8v1c-3.245.083-6.135-1.395-8-4 0 0-4.182 7.433 4 11-1.872 1.247-3.739 2.088-6 2 3.308 1.803 6.913 2.423 10.034 1.517 3.58-1.04 6.522-3.723 7.651-7.742a13.84 13.84 0 0 0 .497-3.753C20.18 7.773 21.692 5.25 22 4.009z">
+        </path>
+        </svg>
+        @fujohnwang</a>
+      </p>
+    </footer>
+  </body>
+</html>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>
+
+
