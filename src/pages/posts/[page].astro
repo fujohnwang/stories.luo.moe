@@ -16,7 +16,7 @@ const { page } = Astro.props;
     <meta keywords="文章列表" />
     <meta description=""/>
     <link rel="icon" type="image/svg+xml" href="https://afoo.me/favicon.svg">
-    <title>文章列表</title>
+    <title>故事列表</title>
     <script src="https://unpkg.com/htmx.org@1.9.5"></script>
     <ViewTransitions/>
   </head>
@@ -30,10 +30,10 @@ const { page } = Astro.props;
 		</nav>
 
 		<main class="prose lg:prose-xl">
-			<h1>Luo . <span class="text-gradient">moe</span></h1>
+			<h1>罗密欧的故事汇</h1>
 		<section class="section blog-section" id="blog-section">
 			<div class="container">
-			  <h2 class="section-title">文章列表</h2>
+			  <!-- <h2 class="section-title">小故事列表</h2> -->
 			  <ul class="blogs list-none">
 				{page.data.map((blog) =>
 				  <li>
