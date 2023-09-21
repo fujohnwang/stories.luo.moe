@@ -29,8 +29,8 @@ const { frontmatter } = Astro.props;
         <a href="https://store.afoo.me">Fuqiang Store</a>
       </nav>
       <main class="prose lg:prose-xl">
-        <div style="color:gray; font-size: x-small">
-          {frontmatter.date.substring(0, 10)}
+        <div style="color:gray; font-size: x-small; margin-bottom: 1rem;">
+          {frontmatter.pubDate.substring(0, 10)}
         </div>
         <slot />
       </main>
