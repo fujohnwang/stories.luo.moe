@@ -1,29 +1,38 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 // const pathname = new URL(Astro.request.url).pathname.split('/');
 ---
 
 <Layout title="Luomoe">
-	<!-- <main class="container mx-auto"> -->
-		<div class="flex flex-col mx-auto p-6 justify-center items-center h-full">
+  <!-- <main class="container mx-auto"> -->
+  <!-- <div class="flex flex-col mx-auto p-6 justify-center items-center h-full">
 			<h1 class="text-6xl lg:text-9xl font-bold colorful">Luo.moe</h1>
 			<a href="/posts/1" class="border-b">罗密欧的故事汇</a>
-			<!-- <span class="inline-block px-2 py-2 relative text-3xl text-white bg-red-600" style="border-radius: 91% 9% 90% 10% / 29% 82% 18% 71%">deadline!</span> -->
-		</div>
+		</div> -->
+    <div style="display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;">
+    <div>
+      <h1 class="text-6xl lg:text-9xl font-bold colorful">
+        <a href="/posts/1">Luo.moe</a>
+      </h1>
+    </div>
+    <div style="">
+      <a href="/posts/1" class="border-b text-xl lg:text-3xl">罗密欧的故事汇</a>
+    </div>
+  </div>
 
-	<!-- </main> -->
+  <!-- </main> -->
 </Layout>
 
 <style>
-	  .colorful {
-        background-image: linear-gradient(
-          45deg,
-          #fe3300,
-          #005ff3
-        );
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+  .colorful {
+    background-image: linear-gradient(45deg, #fe3300, #005ff3);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 </style>
