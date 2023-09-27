@@ -204,6 +204,17 @@ const { page } = Astro.props;
 		  document.getElementById('header')?.classList.remove('h-screen');
 		  document.querySelector('#header nav')?.classList.add('hidden');
 		};
+		// pagefind search section
+		window.addEventListener('DOMContentLoaded', (event) => {
+		  new PagefindUI({ element: '#search'});
+		});
+
+	    window.addEventListener('keydown', (event) => {
+	        if (event.key === '/' || event.key === '.') {
+	            event.preventDefault();
+	            document.querySelector('div#search input').focus();
+	        }
+	    });
 	  </script>
   </body>
 </html>
