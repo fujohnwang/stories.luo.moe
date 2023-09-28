@@ -2,6 +2,8 @@
 import { ViewTransitions } from "astro:transitions";
 // 1. The frontmatter prop gives access to frontmatter and other data
 const { frontmatter } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+
 ---
 
 <html lang="zh">
@@ -14,6 +16,7 @@ const { frontmatter } = Astro.props;
     <meta author={frontmatter.author} />
     <meta keywords={frontmatter.keywords} />
     <meta description={frontmatter.description} />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="https://afoo.me/favicon.svg" />
     <title>{frontmatter.title}</title>
     <script src="https://unpkg.com/htmx.org@1.9.5"></script>

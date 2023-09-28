@@ -67,13 +67,9 @@ const { page } = Astro.props;
 								</p>                    
 						</div>
 						<div class="sm:flex hidden">
-							
-							<p class="text-sm font-medium leading-none cursor-pointer text-indigo-700 border-t border-indigo-400 pt-3 mr-4 px-2">
-								<a href={page.url.current}>{page.currentPage}</a>
+							<p class="text-sm font-medium leading-none cursor-pointer text-indigo-700 pt-3 mr-4 px-2">
+								{page.currentPage} / {page.lastPage}
 							</p>
-							<!--
-							<p class="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">8</p>
-							-->
 						</div>
 						<div class="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
 							<p class="text-sm font-medium leading-none mr-3">
