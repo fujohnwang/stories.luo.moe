@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
+import { Icon } from 'astro-icon/components'
 // const pathname = new URL(Astro.request.url).pathname.split('/');
 ---
 
@@ -16,6 +16,8 @@ import Layout from "../layouts/Layout.astro";
     align-items: center;
     height: 100vh;">
     <div>
+      <!-- Embed the contents of the `/src/icons/logo.svg` file -->
+      <Icon name="logo" size={100} class="mx-auto"/>
       <h1 class="text-6xl lg:text-9xl font-bold colorful">
         <a href="/posts/1">Luo.moe</a>
       </h1>
