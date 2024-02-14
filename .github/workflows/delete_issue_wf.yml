@@ -1,0 +1,16 @@
+name: issue_deleted
+on: 
+    issues: 
+        types: [deleted]
+permissions:
+    contents: write
+jobs:
+    transform:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - run: |
+                  DEST="src/pages/posts/${{github.event.issue.id}}.md"
+                  rm -rf $DEST
+            - uses: stefanzweifel/git-auto-commit-action@v5
+
