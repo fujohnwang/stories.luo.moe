@@ -1,7 +1,7 @@
 name: issue_deleted
 on: 
     issues: 
-        types: [deleted]
+        types: [deleted,closed]
 permissions:
     contents: write
 jobs:
