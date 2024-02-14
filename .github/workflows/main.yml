@@ -1,0 +1,34 @@
+name: issue2story
+on: 
+    issues: 
+        types: [opened, edited]
+permissions:
+    contents: write
+jobs:
+    transform:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - run: |
+                  DEST="src/pages/posts/${{github.event.issue.id}}.md"
+                  echo "DEST_MARKDOWN_FILE=$DEST" >> $GITHUB_ENV
+                  echo "NOW=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+            - uses: DamianReeves/write-file-action@master
+              env:
+                KEYWORDS: ${{ join(github.event.issue.labels.*.name, ', ') }}
+              with:
+                  path: ${{ env.DEST_MARKDOWN_FILE}}
+                  contents: |
+                      ---
+                      layout: '../../layouts/MarkdownLayout.astro'
+                      title: ${{github.event.issue.title}}
+                      author: Fuqiang Wang
+                      pubDate: ${{ env.NOW }}
+                      keywords: ${{ env.KEYWORDS }}
+                      description: ...
+                      ---
+
+                      ${{github.event.issue.body}}
+                  write-mode: overwrite
+            - uses: stefanzweifel/git-auto-commit-action@v5
+
