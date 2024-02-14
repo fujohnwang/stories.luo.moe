@@ -44,7 +44,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
           <button onclick="history.back()" class="border py-1 px-3 rounded">返回(Go Back)</button>
         </div>
       </main>
-      <hr class="my-6"/>
 
       <div hx-get="https://toolfooter.afoo.me/" hx-trigger="load delay:3s, revealed"/>
       <footer class="mt-12">
